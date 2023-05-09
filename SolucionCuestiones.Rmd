@@ -73,4 +73,16 @@ sum(dif)
 sum(dif)
 as.numeric(sum(dif))/365
 ```
+```{r}
+UScereal <- read_csv("data/UScereal(1).csv")
+dato<-UScereal$fat
+us<-median(dato)+3*mad(dato)
+ui<-median(dato)-3*mad(dato)
+
+us<-quantile(dato,0.75)+1.5*IQR(dato)
+ui<-quantile(dato,0.25)-1.5*IQR(dato)
+
+I<-which(dato<=us & dato>=ui)
+sd(dato[I])
+```
 
